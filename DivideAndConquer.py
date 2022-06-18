@@ -10,5 +10,7 @@ def BiCo(n, k):
 
 n = 8
 k = 3
-print ("Value of C(%d,%d) is (%d)" % (n, k,
-                                     binomialCoeff(n, k)))
+
+print("The value of numbers " + str(n) +
+               " and " + str(k) + " is",
+               BiCo(n, k))
