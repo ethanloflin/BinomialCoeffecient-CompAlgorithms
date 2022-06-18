@@ -1,16 +1,31 @@
-def binomialCoeff(n, k):
+def BiCo(n, k, dp):
+     
+    if dp[n][k] != -1:
+        return dp[n][k]
  
-    if k > n:
-        return 0
-    if k == 0 or k == n:
-        return 1
+    if k == 0:
+        dp[n][k] = 1
+        return dp[n][k]
+     
+    if k == n:
+        dp[n][k] = 1
+        return dp[n][k]
+     
+    dp[n][k] = (BiCo(n - 1, k - 1, dp) +
+                BiCo(n - 1, k, dp))
+                 
+    return dp[n][k]
  
-    # Recursive Call
-    return binomialCoeff(n-1, k-1) + binomialCoeff(n-1, k)
+def BiCo2(n, k):
+     
+    dp = [ [ -1 for y in range(k + 1) ]
+                for x in range(n + 1) ]
  
+    return BiCo(n, k, dp)
  
-# Driver Program to test ht above function
-n = int(input)
-k = int(input)
-print ("Value of C(%d,%d) is (%d)" % (n, k,
-                                     binomialCoeff(n, k)))
+n = 8
+k = 3
+ 
+print("The value of numbers " + str(n) +
+               " and " + str(k) + " is",
+               BiCo2(n, k))
